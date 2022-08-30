@@ -1,4 +1,14 @@
+import { useEffect, useRef } from "react";
+
 export const CalculatorApp = () => {
+
+  const inputRef = useRef(null);
+
+
+  useEffect(() => {
+    inputRef.current.focus();
+  }, []);
+
   return (
     <div className="main bg-dark d-flex justify-content-center align-items-center">
       <div className="card p-2 w-50">
@@ -10,9 +20,19 @@ export const CalculatorApp = () => {
             <div className="current-output">
               <div className="row">
                 <div className="col">
+                  <div className="output-preview">
+                    <input
+                      className="form-control bg-secondary text-white border border-0 rounded-0 rounded-top"
+                      rows="1"
+                      readOnly
+                      disabled
+                    />
+                  </div>
                   <input
                     type="text"
-                    className="form-control border border-0 text-white bg-secondary" placeholder="Número 1"
+                    className="form-control border border-0 text-white bg-secondary rounded-0 rounded-bottom"
+                    placeholder="Número 1"
+                    ref={ inputRef }
                     maxLength={ 50 }
                   />
                 </div>
